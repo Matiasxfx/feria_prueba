@@ -1,0 +1,105 @@
+/* Configuración del fondo y la tipografía general */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f3;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* La "tarjeta" blanca central que contiene el cuestionario */
+.container {
+    background-color: #ffffff;
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Estilo del título principal */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Separación entre cada bloque de pregunta */
+.question-block {
+    margin-bottom: 25px;
+}
+
+/* Estilo del texto de la pregunta */
+.question-text {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2980b9;
+}
+
+/* Quita las viñetas por defecto de la lista de opciones */
+.options {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Diseño de cada opción de respuesta */
+.options li {
+    margin-bottom: 8px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: background 0.3s;
+}
+
+/* Cambio de color al pasar el cursor sobre una opción */
+.options li:hover {
+    background: #f1f1f1;
+}
+
+/* Hace que toda la fila sea clickeable */
+label {
+    display: block;
+    cursor: pointer;
+}
+
+/* Estilos del botón para enviar el formulario */
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #2ecc71;
+}
+
+/* Contenedor donde aparecerá el puntaje final */
+#result {
+    margin-top: 25px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Clases dinámicas de CSS que JavaScript asignará según el resultado */
+.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }

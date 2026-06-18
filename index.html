@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario - Feria de Ciencias</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        <h1>🔬 Trivia de Ciencias 🚀</h1>
+        
+        <form id="quizForm">
+            <div class="question-block">
+                <div class="question-text">1. ¿Cómo se llama el proceso por el cual las plantas elaboran su propio alimento?</div>
+                <ul class="options">
+                    <li><label><input type="radio" name="q1" value="a"> a) Respiración</label></li>
+                    <li><label><input type="radio" name="q1" value="b"> b) Digestión</label></li>
+                    <li><label><input type="radio" name="q1" value="c"> c) Fotosíntesis</label></li>
+                </ul>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text">2. ¿Qué fuerza invisible nos mantiene con los pies sobre la Tierra?</div>
+                <ul class="options">
+                    <li><label><input type="radio" name="q2" value="a"> a) Magnetismo</label></li>
+                    <li><label><input type="radio" name="q2" value="b"> b) Gravedad</label></li>
+                    <li><label><input type="radio" name="q2" value="c"> c) Fricción</label></li>
+                </ul>
+            </div>
+            
+            <div class="question-block">
+                <div class="question-text">3. ¿A qué temperatura hierve el agua a nivel del mar?</div>
+                <ul class="options">
+                    <li><label><input type="radio" name="q3" value="a"> a) 100°C</label></li>
+                    <li><label><input type="radio" name="q3" value="b"> b) 50°C</label></li>
+                    <li><label><input type="radio" name="q3" value="c"> c) 0°C</label></li>
+                </ul>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text">4. ¿Cuál es el planeta más grande de nuestro Sistema Solar?</div>
+                <ul class="options">
+                    <li><label><input type="radio" name="q4" value="a"> a) Marte</label></li>
+                    <li><label><input type="radio" name="q4" value="b"> b) Saturno</label></li>
+                    <li><label><input type="radio" name="q4" value="c"> c) Júpiter</label></li>
+                </ul>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text">5. ¿Cuál es el estado de la materia en el que las partículas están más separadas y se mueven libremente?</div>
+                <ul class="options">
+                    <li><label><input type="radio" name="q5" value="a"> a) Sólido</label></li>
+                    <li><label><input type="radio" name="q5" value="b"> b) Líquido</label></li>
+                    <li><label><input type="radio" name="q5" value="c"> c) Gaseoso</label></li>
+                </ul>
+            </div>
+
+            <button type="button" onclick="evaluarCuestionario()">Ver Resultados</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function evaluarCuestionario() {
+            const respuestasCorrectas = {
+                q1: 'c',
+                q2: 'b',
+                q3: 'a',
+                q4: 'c',
+                q5: 'c' 
+            };
+
+            let puntaje = 0;
+            const form = document.getElementById('quizForm');
+            let todasRespondidas = true;
+
+            for (let pregunta in respuestasCorrectas) {
+                const respuestaUsuario = form.elements[pregunta].value;
+                if (!respuestaUsuario) {
+                    todasRespondidas = false;
+                } else if (respuestaUsuario === respuestasCorrectas[pregunta]) {
+                    puntaje++;
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            if (!todasRespondidas) {
+                resultDiv.className = 'warning';
+                resultDiv.innerHTML = '⚠️ Por favor, responde todas las preguntas antes de enviar.';
+                return;
+            }
+
+            if (puntaje === 5) {
+                resultDiv.className = 'success';
+                resultDiv.innerHTML = `¡Puntaje perfecto! 🏆 Contestaste correctamente ${puntaje} de 5.`;
+            } else if (puntaje >= 3) {
+                resultDiv.className = 'success';
+                resultDiv.innerHTML = `¡Muy bien! 👍 Acertaste ${puntaje} de 5.`;
+            } else {
+                resultDiv.className = 'warning';
+                resultDiv.innerHTML = `Obtuviste ${puntaje} de 5. ¡Sigue investigando y aprendiendo! 🧠`;
+            }
+        }
+    </script>
+
+</body>
+</html>
